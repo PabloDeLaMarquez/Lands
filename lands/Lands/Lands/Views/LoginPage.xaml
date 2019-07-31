@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lands.Views.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Login">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Login}">
+            <StackLayout
+                     Padding="10,20,10,5">
+                <Label                
+                FontAttributes="Bold"
+                FontSize="Large"
+                Text="LOGIN"
+                HorizontalOptions="Center"
+                />
+                <Grid 
+            Margin="0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="User Name"/>
+                    <Entry
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Keyboard="Email"
+                    Placeholder="Enter your user name..."
+                        Text="{Binding Email, Mode=TwoWay}"
+                    />
+                    <Label
+                    VerticalOptions="Center"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Password"/>
+                    <Entry
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    IsPassword="True"
+                     Text="{Binding Password, Mode=TwoWay}"
+                    Placeholder="Enter your password..."
+                    />
+                </Grid>
+                <StackLayout
+                Orientation="Horizontal">
+                    <Label
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="Center"
+                    Text="Rmemember this device"
+                    />
+                    <Switch
+                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                    HorizontalOptions="End"
+                    Scale="0.7">
+                    </Switch>
+                </StackLayout>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                />
+                <StackLayout
+                Margin="50,0">
+                    <!--El binding lo pueden compartir varios controles-->
+                    <Button
+                    BackgroundColor="Purple"
+                    CornerRadius="20"
+                    Command="{Binding LoginComand}"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                      HeightRequest="40"
+                      Text="LOGIN"
+                      TextColor="Cyan">
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
